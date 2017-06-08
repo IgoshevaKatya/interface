@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -37,24 +37,11 @@
          <string>Port:</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>110</y>
-          <width>43</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Speed:</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>209</y>
+          <x>10</x>
+          <y>80</y>
           <width>50</width>
           <height>16</height>
          </rect>
@@ -63,41 +50,21 @@
          <string>Version:</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="textEdit">
-        <property name="geometry">
-         <rect>
-          <x>83</x>
-          <y>12</y>
-          <width>511</width>
-          <height>88</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QTextEdit" name="textEdit_3">
         <property name="geometry">
          <rect>
-          <x>83</x>
-          <y>209</y>
+          <x>80</x>
+          <y>70</y>
           <width>511</width>
           <height>88</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="textEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>83</x>
-          <y>110</y>
-          <width>511</width>
-          <height>89</height>
          </rect>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>191</x>
-          <y>298</y>
+          <x>110</x>
+          <y>200</y>
           <width>131</width>
           <height>41</height>
          </rect>
@@ -106,17 +73,27 @@
          <string>Get version</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButton_connect">
         <property name="geometry">
          <rect>
-          <x>378</x>
-          <y>298</y>
+          <x>330</x>
+          <y>200</y>
           <width>121</width>
           <height>41</height>
          </rect>
         </property>
         <property name="text">
          <string>Connect</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>10</y>
+          <width>104</width>
+          <height>26</height>
+         </rect>
         </property>
        </widget>
       </widget>
@@ -268,6 +245,25 @@ value</string>
        <attribute name="title">
         <string>Страница</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_startTest">
+          <property name="text">
+           <string>Start testing</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_finishTest">
+          <property name="text">
+           <string>Finish testing</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="QTextEdit" name="te_result"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

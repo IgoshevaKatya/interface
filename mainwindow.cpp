@@ -1,10 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "serialbt.h"
 #include <QSerialPort>
 #include <QTabWidget>
 #include <QTabBar>
+#include <QSerialPortInfo>
+#include <QDebug>
+#include <QList>
 
-QSerialPort serial;
+
+SerialBT serial;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,8 +20,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->setTabText(1, "Calibration");
     ui->tabWidget->setTabText(2, "Testing");
 
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()){
+        ui->comboBox->addItem(info.portName());
+    }
 
-
+//    serial.open_serial(ui->comboBox->currentText());
 }
 
 MainWindow::~MainWindow()
@@ -25,15 +33,6 @@ MainWindow::~MainWindow()
     //    serial.close();
 }
 
-
-//    serial.setPortName("com4");
-//    serial.setBaudRate(QSerialPort::Baud9600);
-//    serial.setDataBits(QSerialPort::Data8);
-//    serial.setParity(QSerialPort::NoParity);
-//    serial.setStopBits(QSerialPort::OneStop);
-//    serial.setFlowControl(QSerialPort::NoFlowControl);
-//    serial.open(QIODevice::ReadWrite);
-//    serial.write("ok");
 
 void MainWindow::on_btn_run_clicked()
 {
@@ -72,3 +71,20 @@ void MainWindow::on_btn_run_clicked()
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 }
 
+
+
+
+void MainWindow::on_pushButton_connect_clicked()
+{
+    serial.open_serial(ui->comboBox->currentText());
+}
+
+void MainWindow::on_pushButton_startTest_clicked()
+{
+    serial.writeData("Start");
+}
+
+void MainWindow::on_pushButton_finishTest_clicked()
+{
+    ui->te_result->append(serial.readData());
+}
